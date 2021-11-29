@@ -1,21 +1,22 @@
 package com.specialized.android
 
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Observable
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
 interface GearDao {
-    fun getGear(): Observable<GearItem>
-    fun addItem(item: GearItem): Completable
+    fun getGear(): Flow<GearItem>
+    fun addItem(item: GearItem): Flow<Boolean>
 }
 
-class GearDaoImpl: GearDao {
-    private val data = arrayListOf(GearItem("123", "Default Item", "https://www.realurl.com/gearItem.png"))
+class GearDaoImpl : GearDao {
+    private val data =
+        arrayListOf(GearItem("123", "Default Item", "https://www.realurl.com/gearItem.png"))
 
-    override fun getGear(): Observable<GearItem> {
-        return Observable.empty()
+    override fun getGear(): Flow<GearItem> {
+        return flowOf()
     }
 
-    override fun addItem(item: GearItem): Completable {
+    override fun addItem(item: GearItem): Flow<Boolean> {
         TODO("Not yet implemented")
     }
 
